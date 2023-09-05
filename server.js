@@ -9,7 +9,7 @@ const PORT = process.env.PORT ?? 3000
 connectDB()
 app.use(cors())
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 
 
 const catBookSchema = new mongoose.Schema({
@@ -38,7 +38,7 @@ app.post('/catBook', async (req, res) => {
     res.send(saveCat)
 })
 
-app.delete('/catBook/:id', async(req, res)=>{
+app.delete('/catBook/:id', async (req, res) => {
     await CatBook.findByIdAndDelete(req.params.id)
     res.status(200).send('Cat deleted')
 })
