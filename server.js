@@ -38,6 +38,19 @@ app.post('/catBook', async (req, res) => {
     res.send(saveCat)
 })
 
+app.patch('/catBook/:id', async (req, res) => {
+    try {
+        await CatBook.findByIdAndUpdate(req.params.id, req.body)
+        res.send('Cat Updated')
+
+    } catch (error) {
+        if (error) {
+            return res.status(400)
+        }
+
+    }
+})
+
 app.delete('/catBook/:id', async (req, res) => {
     await CatBook.findByIdAndDelete(req.params.id)
     res.status(200).send('Cat deleted')
